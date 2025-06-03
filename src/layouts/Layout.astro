@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from 'astro:transitions'
 import Analytics from '@vercel/analytics/astro'
+import '@/styles/global.css'
 
 interface Props {
   title: string
@@ -13,7 +14,7 @@ const {
   title = 'Title',
   description = 'Description of landing page',
   canonical,
-  robots
+  robots,
 } = Astro.props
 ---
 
@@ -27,6 +28,13 @@ const {
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
 
     <!-- Preload fonts so that the font change is not visible when the page loads -->
+    <link
+      rel='preload'
+      href='/fonts/Inter-variable.woff2'
+      as='font'
+      type='font/woff2'
+      crossorigin='anonymous'
+    />
 
     <meta name='description' content={description} />
     {canonical && <link rel='canonical' href={canonical} />}
